@@ -13,9 +13,12 @@ router.post('/auth/register', (req, res, next) => {
         (req.body.aadharNumber !== null ||
         req.body.aadharNumber !== '') &&
         (req.body.mobile !== null ||
-        req.body.mobile !== '')
+        req.body.mobile !== '') &&
+        (req.body.name !== null ||
+            req.body.name !== '')
     ){
         var data = new participant({
+            name : req.body.name,
             aadharNumber : req.body.aadharNumber,
             mobile : req.body.mobile
         });
@@ -33,7 +36,7 @@ router.post('/auth/register', (req, res, next) => {
         });
     }
     else{
-        res.json({code : 1,message : "Invalid Aadhar Number or Mobile Number."});
+        res.json({code : 1,message : "Invalid Name, Aadhar Number or Mobile Number."});
     }
 });
 

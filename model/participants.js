@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var participantSchema = new Schema({
+    name : {type : String,required: true},
     aadharNumber: {type : String, unique: true, required: true},
     mobile: {type : String, required: true, unique: true,}
 });

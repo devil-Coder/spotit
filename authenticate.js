@@ -25,7 +25,9 @@ function authenticate(req, res) {
                 res.cookie(process.env.TOKEN_NAME,token);
                 res.json({
                     code: 0 ,
-                    message: 'Success!'
+                    message: 'Success!',
+                    token : token,
+                    user : user
                 });
             }
         })
