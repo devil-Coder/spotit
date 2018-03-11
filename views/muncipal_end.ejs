@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Spot It </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
+</head>
+<body>
+<h1 class="text-center" style="background-color : #00B389; color : #fff; padding : 5%; font-size : 50px; margin : 0 0 20px 0;"> Spot It </h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 img-container">
+            <img src="http://rameswaramtourism.com/wp-content/uploads/2015/11/clean-india-campaign-rameswaram.jpg" alt="" id="image" height="100%" width="100%">
+        </div>
+        <div class="col-lg-6">
+            <div class="intro" style="font-size : 30px; padding : 20px;">
+                A small step from the end of every Indian citizen can be a big step for fulfilling the purpose of the Narendra Modi’s ‘Clean India’ campaign.
+            </div>
+
+            <div class="button-container">
+                <div class="input-group">
+                    <form class="custom-file" method="get" action="/requestSubmission">
+                        <!--<label for="location">You are reporting from </label>-->
+                        <!--<div class="input-group">-->
+                        <!--<div class="input-group-append">-->
+                        <!--<input type="text"id="basic-addon2" class="input-group-text" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+                        <!--<span class="input-group-text" id="basic-addon2"><input type="text" class="form-control" placeholder="LAT" aria-label="Recipient's username" aria-describedby="basic-addon2"></span>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <input type="file" name="upload" onchange="showImage.call(this)" class="form-control" ng-model="post.imageUrl">
+                        <!--<label class="custom-file-label" for="inputGroupFile02"> Please select an image </label>-->
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary"><b> Done </b></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <p style="font-size : 25px; margin : 40px;"> An initiative by Government of India. </p>
+        </div>
+</body>
+
+<script>
+    var showImage = function(){
+        if(this.files && this.files[0]){
+            var obj = new FileReader();
+            obj.onload = function(data){
+                var image = document.getElementById('image');
+                image.src = data.target.result;
+                image.style.display = "block";
+            }
+            obj.readAsDataURL(this.files[0]);
+        }
+    }
+    var x = document.getElementById("location");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";}
+    }
+
+    function showPosition(position) {
+        x.innerHTML="Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
+</html>
