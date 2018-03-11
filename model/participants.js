@@ -10,8 +10,4 @@ var participantSchema = new Schema({
 });
 
 
-var participant = mongoose.model('participants', participantSchema);
-
-module.exports = {participant: participant};
-
-
+var participant = module.exports = mongoose.model('participants', participantSchema);

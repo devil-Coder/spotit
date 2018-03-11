@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGODB, function(err) {
         console.log(err);
         //process.exit(1);
     } else {
-        console.log('MongoDB Listening at port 3000...');
+        console.log('Database ready to use..');
     }
 });
 // catch 404 and forward to error handler
