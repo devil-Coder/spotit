@@ -44,7 +44,7 @@ function check_token(req, res, next) {
         // verifies secret and checks exp
         jwt.verify(token, process.env.SECRET, function(err, decoded) {
             if (err) {
-                return res.json({code: 0,message: "Session expired !!"});
+                return res.json({code: 1,message: "Session expired !!"});
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;

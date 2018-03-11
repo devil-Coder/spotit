@@ -9,7 +9,7 @@ router.get('/', (req, res, next)=> {
   res.render('index', { title: 'Spot It | Muncipal Corp.' });
 });
 
-router.post('/verifyParticipant', function (req, res) {
+router.post('/auth/login', function (req, res) {
     authenticate.authenticate(req, res);
 });
 
