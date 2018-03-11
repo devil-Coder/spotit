@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
 
 var app = express();
 
@@ -25,7 +25,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/dashboard', dashboard);
+
+//for user Logout
+app.get('/logout',function (req,res) {
+    res.clearCookie(process.env.TOKEN_NAME);
+    res.redirect('/');
+});
 
 //CONNECTING TO MONGODB ON START
 mongoose.connect(process.env.MONGODB, function(err) {

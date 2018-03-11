@@ -1,6 +1,6 @@
 {
   "name": "spotit",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -12,9 +12,9 @@
     "dotenv": "^5.0.1",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.9",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5",
-    "unirest": "^0.5.1"
+    "serve-favicon": "~2.4.5"
   }
 }
