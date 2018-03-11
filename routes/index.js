@@ -1,11 +1,16 @@
 var express = require('express');
 var fs = require('fs');
 var participant = require('../model/participants.js');
+var authenticate = require('../authenticate.js');
 
 var router = express.Router();
 
 router.get('/', (req, res, next)=> {
   res.render('index', { title: 'Spot It | Muncipal Corp.' });
+});
+
+router.post('/verifyParticipant', function (req, res) {
+    authenticate.authenticate(req, res);
 });
 
 router.post('/auth/register', (req, res, next) => {

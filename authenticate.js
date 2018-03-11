@@ -7,7 +7,7 @@ var participant = require('./model/participants.js');
 
 function authenticate(req, res) {
     if (req.body.aadharNumber && req.body.mobile) {
-        user.findOne({ aadharNumber : req.body.aadharNumber }, function (err, user) {
+        participant.findOne({ aadharNumber : req.body.aadharNumber }, function (err, user) {
             if (err) {
                 res.send({code: 1,message: "Something went wrong! Please try again."});
             }
