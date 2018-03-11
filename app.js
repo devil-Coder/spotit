@@ -1,9 +1,11 @@
 var express = require('express');
+require('dotenv').config();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -25,6 +27,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+//CONNECTING TO MONGODB ON START
+mongoose.connect(process.env.MONGODB, function(err) {
+    if (err) {
+        console.log(err);
+        //process.exit(1);
+    } else {
+        console.log('MongoDB Listening at port 3000...');
+    }
+});
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -42,5 +59,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+console.log("app is running ..")
 module.exports = app;
