@@ -57,7 +57,7 @@ body{
 
 .spacer{
   height: 100vh;
-  background: url("../images/bg-login.jpg");
+  background: url("../images/gtamap.jpg");
 }
 
 .uigif{
@@ -100,8 +100,9 @@ body{
 }
 
 .login-box{
-  background-color: #163317;
-  padding: 10px;
+  background-color: rgba(22,51,23,0.7);
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .btn{
