@@ -65,9 +65,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-console.log("app is running ..")
 module.exports = app;
 
-/* Use this for localhost , added by kira0204 */
 app.listen(8000, 'localhost');
-console.log('Localhost running @ port 3000');
+console.log("App is running .. waiting for batabase to respond.");
