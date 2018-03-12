@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Spot It.</title>
+  <link rel="stylesheet" href="/stylesheets/index.css">
   <style>
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
@@ -18,10 +19,26 @@
       margin: 0;
       padding: 0;
     }
+
+    .navbar{
+      background-color: #163317;
+      padding-bottom: 0px!important;
+      padding-top: 2px!important;
+    }
   </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/index.css">
   <style> body {padding: 0; margin: 0; overflow: hidden; background-color: #343332;} </style>
 </head>
 <body>
+
+  <nav class="navbar navbar-spot-it bariol fixed-top">
+    <a class="navbar-brand horizontal-center" href="#">
+      <img src="/images/spotItSpaced.png" class="d-inline-block align-top spot-it-logo horizontal-center bg-dark" alt="">
+    </a>
+  </nav>
 
   <div id="map"></div>
 
