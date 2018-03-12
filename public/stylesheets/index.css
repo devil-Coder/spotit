@@ -1,0 +1,60 @@
+body{
+  background-color: #4CAF50;
+}
+
+@font-face {
+    font-family: bariol-bold;
+    src: url(../fonts/bariol_bold.otf);
+}
+
+.bg-dark{
+  background-color: #163317;
+  padding: 5px 25px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.navbar-spot-it{
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.navbar-brand{
+  padding-top: 0!important;
+}
+
+.spot-it-logo{
+  height: 2.5em;
+}
+
+.nav-item{
+  color: white;
+}
+
+.bariol{
+  font-family: bariol-bold;
+}
+
+.horizontal-center{
+  margin-left: 50%;
+  transform: translate(-50%,0);
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("../images/background.jpg");
+    /*background-color: ##4CAF50;*/
+
+    /* Set a specific height */
+    height: 100vh;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.spacer{
+  height: 100vh;
+}

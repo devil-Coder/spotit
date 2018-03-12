@@ -38,11 +38,10 @@ var authenticateAdministrator = (req, res, next)=>{
 }
 
 router.post('/', (req, res) => {
-    res.send("This is the dashboard!");
+    res.render('municipalVellore', { title: 'Spot It.' });
 });
 
 router.post('/complaint/add', (req, res, next)=> {
-    var user = req._doc.decoded.name;
     updateComplaint = (comapaintData)=>{
         var data = new complaint(comapaintData);
         data.save((err,doc)=>{
@@ -63,7 +62,7 @@ router.post('/complaint/add', (req, res, next)=> {
         longitude: req.body.longitude
     };
     participant.update(
-        { name : user },
+        { name : req.body.aadharNumber },
         { $push: { history: history } },
         (err,doc)=>{
         err?console.log(err): updateComplaint(history);
