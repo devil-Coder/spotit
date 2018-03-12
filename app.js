@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var dashboard = require('./routes/dashboard');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/dashboard', dashboard);
+app.use('/user', user);
 
 //for user Logout
 app.get('/logout',function (req,res) {
