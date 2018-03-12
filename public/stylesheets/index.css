@@ -57,4 +57,58 @@ body{
 
 .spacer{
   height: 100vh;
+  background: url("../images/bg-login.jpg");
+}
+
+.uigif{
+  height: 80vh;
+  margin-left: 50%;
+  margin-top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.vertical-placing{
+  padding-top: 50vh;
+}
+
+.info-box{
+  transform: translate(0,-50%);
+  background-color: rgba(255,255,255,0.8);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.text-green{
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+@keyframes jump {
+  0%   {transform: translate3d(0,0,0);}
+  40%  {transform: translate3d(0,30%,0);}
+  100% {transform: translate3d(0,100%,0);}
+}
+
+.jump {
+  transform-origin: 50% 50%;
+  animation: jump .5s linear alternate infinite;
+  margin-bottom: 15px;
+}
+
+.vertical-center{
+  transform: translate(0,-50%);
+}
+
+.login-box{
+  background-color: #163317;
+  padding: 10px;
+}
+
+.btn{
+  color: #163317!important;
+}
+
+.btn :hover{
+  background-color: #163317!important;
+  color: white;
 }
