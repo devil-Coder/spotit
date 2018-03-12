@@ -6,20 +6,20 @@ var participant = require('../model/participants');
 var complaint = require('../model/complaints');
 var administrator = require('../model/administrators');
 
-var authenticate = require('../authenticate');
-router.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, enigmaPlayer-access-token");
-    if (req.method === 'OPTIONS') {
-        var headers = {};
-        headers["Access-Control-Allow-Methods"] = "GET, OPTIONS";
-        headers["Access-Control-Allow-Credentials"] = false;
-        res.writeHead(200, headers);
-        res.end();
-    } else {
-        authenticate.verify_token(req, res, next);
-    }
-});
+// var authenticate = require('../authenticate');
+// router.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, enigmaPlayer-access-token");
+//     if (req.method === 'OPTIONS') {
+//         var headers = {};
+//         headers["Access-Control-Allow-Methods"] = "GET, OPTIONS";
+//         headers["Access-Control-Allow-Credentials"] = false;
+//         res.writeHead(200, headers);
+//         res.end();
+//     } else {
+//         authenticate.verify_token(req, res, next);
+//     }
+// });
 
 //Authenticate developer
 var authenticateAdministrator = (req, res, next)=>{
@@ -40,35 +40,6 @@ var authenticateAdministrator = (req, res, next)=>{
 router.post('/', (req, res) => {
     res.render('municipalVellore', { title: 'Spot It.' });
 });
-
-router.post('/complaint/add', (req, res, next)=> {
-    updateComplaint = (comapaintData)=>{
-        var data = new complaint(comapaintData);
-        data.save((err,doc)=>{
-            if(err)
-            {
-                res.json({code : 1,message : "Something went wrong !!"});
-            }
-            else{
-                fs.appendFileSync('./public/javascripts/complaints.js', JSON.stringify(doc));
-                res.json({code: 0,message : "Complaint registered !"});
-            }
-        });
-    }
-    history = {
-        category: req.body.category,
-        complaint: req.body.complaint,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
-    };
-    participant.update(
-        { name : req.body.aadharNumber },
-        { $push: { history: history } },
-        (err,doc)=>{
-        err?console.log(err): updateComplaint(history);
-    });
-});
-
 
 router.post('/complain/resolve/:complaintId/:fakeCode',authenticateAdministrator, (req, res) => {
     var id = req.params.complaintId;
