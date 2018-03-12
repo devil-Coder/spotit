@@ -22,26 +22,26 @@ var administrator = require('../model/administrators');
 // });
 
 //Authenticate developer
-var authenticateAdministrator = (req, res, next)=>{
-    var username = req.decoded._doc.username;
-    adminstrator.findOne({username : username}, (err, doc)=> {
-        if (err) {
-            throw err;
-        }
-        else if (doc) {
-            next();
-        }
-        else{
-            res.json({code : 1 ,message : "Unauthorized Access!"});
-        }
-    });
-}
+// var authenticateAdministrator = (req, res, next)=>{
+//     var username = req.decoded._doc.username;
+//     adminstrator.findOne({username : username}, (err, doc)=> {
+//         if (err) {
+//             throw err;
+//         }
+//         else if (doc) {
+//             next();
+//         }
+//         else{
+//             res.json({code : 1 ,message : "Unauthorized Access!"});
+//         }
+//     });
+// }
 
-router.post('/', (req, res) => {
-    res.render('municipalVellore', { title: 'Spot It.' });
+router.get('/', (req, res) => {
+    res.render('muncipalVellore', { title: 'Spot It.' });
 });
 
-router.post('/complain/resolve/:complaintId/:fakeCode',authenticateAdministrator, (req, res) => {
+router.post('/complain/resolve/:complaintId/:fakeCode', (req, res) => {
     var id = req.params.complaintId;
     var adminId = req.decoded._doc._id;
     administrator.findOne({_id : adminId},{},(err,doc)=>{

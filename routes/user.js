@@ -16,7 +16,17 @@ router.post('/complaint/add', (req, res, next)=> {
             res.json({code : 1,message : "Something went wrong !!"});
         }
         else{
-            fs.appendFileSync('./public/javascripts/complaints.js', JSON.stringify(doc));
+            fs.writeFile('./public/javascripts/complaints.js', 'var complaints = [');
+            complaint.find({},(err,docTOwrite)=>{
+                fs.writeFile('./public/javascripts/complaints.js', '{"raj":"car"}', function(err) {
+                if(err) {
+                    console.log(err);
+                }
+            })
+    fs.writeFile('./public/javascripts/complaints.js', ']');
+
+});
+fs.appendFileSync();
             res.json({code: 0,message : "Complaint registered !"});
             }
         });

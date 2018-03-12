@@ -16,6 +16,16 @@ router.post('/auth/login', function (req, res) {
     authenticate.authenticate(req, res);
 });
 
+router.post('/auth/admin', function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    if(username === "admin" && password === "admin"){
+        res.redirect('/dashboard');
+    }else{
+        res.json({code : 1,message : "Username/password is incorrect."});
+    }
+});
+
 router.post('/auth/register', (req, res, next) => {
     if(
         (req.body.aadharNumber !== null ||
