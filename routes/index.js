@@ -6,7 +6,7 @@ var authenticate = require('../authenticate.js');
 var router = express.Router();
 
 router.get('/', (req, res, next)=> {
-  res.render('index', { title: 'Spot It | Muncipal Corp.' });
+  res.render('index', { title: 'Spot It.' });
 });
 
 router.post('/auth/login', function (req, res) {

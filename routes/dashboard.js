@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
 });
 
 router.post('/', (req, res) => {
-    res.send("This is the dashboard!");
+    res.render('municipalVellore', { title: 'Spot It.' });
 });
 
 module.exports = router;

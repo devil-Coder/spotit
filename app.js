@@ -67,3 +67,7 @@ app.use(function(err, req, res, next) {
 });
 console.log("app is running ..")
 module.exports = app;
+
+/* Use this for localhost , added by kira0204 */
+app.listen(8000, 'localhost');
+console.log('Localhost running @ port 3000');

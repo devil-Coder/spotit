@@ -1,76 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Spot It </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!--Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
-  </head>
-  <body>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-  <h1 class="text-center" style="background-color : #00B389; color : #fff; padding : 5%; font-size : 50px; margin : 0 0 20px 0;"> Spot It </h1>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6 img-container">
-        <img src="http://rameswaramtourism.com/wp-content/uploads/2015/11/clean-india-campaign-rameswaram.jpg" alt="" id="image" height="100%" width="100%">
-      </div>
-      <div class="col-lg-6">
-        <div class="intro" style="font-size : 30px; padding : 20px;">
-          A small step from the end of every Indian citizen can be a big step for fulfilling the purpose of the Narendra Modi’s ‘Clean India’ campaign.
-        </div>
+<!--All rights reserved Sahil Trivedi 2018-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spot It.</title>
+  <!--CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
 
-        <div class="button-container">
-          <form action="" class="form">
-            <div class="input-group mb-3">
-              <div class="custom-file">
-                <input type="file" name="upload" onchange="showImage.call(this)" class="custom-file-input" ng-model="post.imageUrl">
-                <label class="custom-file-label" for="inputGroupFile02"><b> Please select an Image </b></label>
-              </div>
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-primary"><b> Done </b></button>
-              </div>
-            </div>
-            <br>
-            <div class="recaptcha-container" align="center">
-              <div class="g-recaptcha" data-sitekey="6LfI9EsUAAAAAI2GxSvofeuL31pb0H6QI5r6Lcyp"></div>
-            </div>
-          </form>
-      </div>
-    </div>
+  <nav class="navbar navbar-spot-it bariol fixed-top">
+    <a class="navbar-brand horizontal-center" href="#">
+      <img src="/images/spotItSpaced.png" class="d-inline-block align-top spot-it-logo horizontal-center bg-dark" alt="">
+    </a>
+  </nav>
+
+  <div class="parallax">
+
   </div>
-      <div class="col-lg-12 text-right">
-        <p style="font-size : 12px; margin : 40px;"> An initiative by Government of India. </p>
-      </div>
-  </body>
 
-  <script>
-      var showImage = function(){
-          if(this.files && this.files[0]){
-              var obj = new FileReader();
-              obj.onload = function(data){
-                  var image = document.getElementById('image');
-                  image.src = data.target.result;
-                  image.style.display = "block";
-              }
-              obj.readAsDataURL(this.files[0]);
-          }
-      }
-      var x = document.getElementById("location");
+  <div class="spacer" style="background-color: white;">
 
-      function getLocation() {
-          if (navigator.geolocation) {
-              navigator.geolocation.watchPosition(showPosition);
-          } else {
-              x.innerHTML = "Geolocation is not supported by this browser.";}
-      }
+  </div>
 
-      function showPosition(position) {
-          x.innerHTML="Latitude: " + position.coords.latitude +
-              "<br>Longitude: " + position.coords.longitude;
-      }
-  </script>
+  <div class="spacer" style="background-color: #163317;">
+
+  </div>
+
+
+  <!--Javascript-->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
 </html>
