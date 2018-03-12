@@ -1,6 +1,9 @@
 var express = require('express');
 var fs = require('fs');
 var participant = require('../model/participants.js');
+var complaint = require('../model/complaints');
+var administrator = require('../model/administrators');
+
 var authenticate = require('../authenticate.js');
 
 var router = express.Router();

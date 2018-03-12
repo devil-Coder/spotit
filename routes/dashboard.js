@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 
 var participant = require('../model/participants');
+var complaint = require('../model/complaints');
+var administrator = require('../model/administrators');
 
 var authenticate = require('../authenticate');
 router.use(function (req, res, next) {
@@ -18,8 +21,79 @@ router.use(function (req, res, next) {
     }
 });
 
+//Authenticate developer
+var authenticateAdministrator = (req, res, next)=>{
+    var username = req.decoded._doc.username;
+    adminstrator.findOne({username : username}, (err, doc)=> {
+        if (err) {
+            throw err;
+        }
+        else if (doc) {
+            next();
+        }
+        else{
+            res.json({code : 1 ,message : "Unauthorized Access!"});
+        }
+    });
+}
+
 router.post('/', (req, res) => {
     res.send("This is the dashboard!");
 });
 
+router.post('/complaint/add', (req, res, next)=> {
+    var user = req._doc.decoded.name;
+    updateComplaint = (comapaintData)=>{
+        var data = new complaint(comapaintData);
+        data.save((err,doc)=>{
+            if(err)
+            {
+                res.json({code : 1,message : "Something went wrong !!"});
+            }
+            else{
+                fs.appendFileSync('./public/javascripts/complaints.js', JSON.stringify(doc));
+                res.json({code: 0,message : "Complaint registered !"});
+            }
+        });
+    }
+    history = {
+        category: req.body.category,
+        complaint: req.body.complaint,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    };
+    participant.update(
+        { name : user },
+        { $push: { history: history } },
+        (err,doc)=>{
+        err?console.log(err): updateComplaint(history);
+    });
+});
+
+
+router.post('/complain/resolve/:complaintId/:fakeCode',authenticateAdministrator, (req, res) => {
+    var id = req.params.complaintId;
+    var adminId = req.decoded._doc._id;
+    administrator.findOne({_id : adminId},{},(err,doc)=>{
+        if(err){
+            console.log(err);
+            res.json({code : 1, message : "Something went wrong."})
+        }
+        else if(doc){
+            var status = req.params.fakeCode === 1 ? 1  : 2;
+            var query = {
+                resolvedBy : doc.username,
+                status : status
+            }
+            compalaint.update({_id : id },query,(err,done)=>{
+                if(err){
+                    res.json({code : 1, message : "Something went wrong"});
+                }
+                else{
+                    res.json({code : 0, message : "Issue closed"});
+                }
+            })
+        }
+    })
+});
 module.exports = router;
